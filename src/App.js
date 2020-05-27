@@ -46,7 +46,7 @@ class ExerciseLabel extends React.Component {
     }
     const {rank, suit} = topCard;
 
-    let suitToRep = [10, 12, 15, 20];
+    let suitToRep = [20, 12, 15, 10];
     let rankToExercise = {
       '11': 'Jump Squats',
       '12': 'Mountain Climbers',
@@ -56,7 +56,7 @@ class ExerciseLabel extends React.Component {
     let rep = suitToRep[suit];
     let exercise = rankToExercise[rank];
 
-    return <p style={{fontSize: '20px', textAlign: 'center'}}>{`${rep} ${exercise}`}</p>;
+    return <p style={{fontSize: '24px', textAlign: 'center'}}>{`${rep} ${exercise}`}</p>;
   }
 }
 
@@ -70,7 +70,7 @@ class App extends React.Component {
         usedCards: [],
      }
      this.handleUpdateCards = this.handleUpdateCards.bind(this);
-     this.handleResetCards = this.handleResetCards(this);
+     this.handleResetCards = this.handleResetCards.bind(this);
   }
 
   handleUpdateCards(e) {
@@ -84,16 +84,22 @@ class App extends React.Component {
   }
 
   handleResetCards(e) {
-    console.log('444444444');
-
-    // if (this.state.cards.length === 0) {
+    if (this.state.cards.length) {
+      let currentCard = this.state.usedCards[this.state.usedCards.length - 1];
+      this.setState((state) => {
+        return {
+          cards: state.cards.concat(currentCard),
+          usedCards: state.usedCards.slice(0, state.usedCards.length - 1),
+        };
+      });
+    } else {
       this.setState(state => {
         return {
           cards: createNewHand(),
           usedCards: [],
         };
       });
-    // }
+    }
   }
 
   render() {
