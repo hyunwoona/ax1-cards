@@ -34,10 +34,6 @@ function createNewHand() {
 }
 
 class ExerciseLabel extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {topCard} = this.props;
     if (!topCard) {
@@ -103,7 +99,7 @@ class App extends React.Component {
 
   render() {
      return (
-        <div>
+        <div style={{margin: '0 16px'}}>
           <Hand
             cards={this.state.cards}
             hidden={false}
