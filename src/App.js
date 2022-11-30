@@ -99,6 +99,7 @@ class App extends React.Component {
 
   render() {
      return (
+      <>
         <div style={{margin: '0 16px'}}>
           <Hand
             cards={this.state.cards}
@@ -120,6 +121,12 @@ class App extends React.Component {
             topCard={this.state.usedCards.length && this.state.usedCards[this.state.usedCards.length - 1]}
           />
         </div>
+        <footer>
+          <p class="advertisement" style={{ marginTop: '5em', fontSize: '14px', textAlign: 'right' }}>
+            If you love skin care, join <a id="credit" href="https://www.breakout.so/">Breakout</a>!
+          </p>
+        </footer>
+      </>
      );
   }
 }
